@@ -366,6 +366,43 @@ footer {
 #singlesong > div:last-child .thumbnail img {
   max-width: 100%;
 }
+#singlesong > div:last-child .box2 {
+  font-family: "Poppins", sans-serif;
+}
+#singlesong > div:last-child .box2 h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  display: block;
+  background-color: #CDEDFF;
+  padding: 0 0.2rem;
+  font-size: clamp(1.2rem, 0.8vw + 0.4rem, 1.6rem);
+  font-weight: 500;
+}
+#singlesong > div:last-child .box2 > ul {
+  padding: 0.4rem;
+}
+#singlesong > div:last-child .box2 > ul > li {
+  border: 1px solid #21AEFF;
+  margin-bottom: 0.6rem;
+  padding: 0 0.4rem;
+}
+#singlesong > div:last-child .box2 > ul > li a {
+  color: #4B235F;
+  font-size: clamp(1rem, 1vw, 1.2rem);
+}
+#singlesong > div:last-child .box2 > ul > li:hover {
+  background-color: #f8f8f8;
+}
+#singlesong > div:last-child .box2 > ul ul li {
+  color: #333346;
+  display: inline-block;
+  margin-right: 0.4rem;
+  font-size: clamp(0.8rem, 1vw, 1rem);
+}
+
+.languages {
+  border: 1px solid rgb(255, 255, 255);
+}
 
 @media (width < 920px) {
   html {
@@ -403,6 +440,23 @@ footer {
   #singlesong > div:first-child ul li {
     padding: 0.1rem 0.4rem;
     margin: 0.4rem 0.2rem;
+  }
+  #singlesong > div:last-child {
+    max-width: unset;
+  }
+  #singlesong > div:last-child .thumbnail img {
+    max-height: 200px;
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  #singlesong .songSidebar {
+    display: block;
+    border: 1px solid;
+    border: 1px solid;
+  }
+  #singlesong .songSidebar .songSidebar .thumbnail img {
+    width: 100%;
   }
 }
 @media (width < 474px) {
