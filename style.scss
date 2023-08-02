@@ -21,6 +21,7 @@ $backgrouncolor: #f8f8f8;
 $colorwhite: white;
 $bg1: #CDEDFF;
 $bg1light: #cdedff32;
+$megamenubg: #f1faff;
 
 html {
     scroll-behavior: smooth;
@@ -89,13 +90,15 @@ header {
             position: relative;
 
             .song_megamenu {
-                border: 1px solid;
+                border: 1px solid $bg1;
                 padding: .6rem;
                 position: absolute;
                 min-width: max-content;
-                top: 1.6rem;
+                top: 1.4rem;
                 left: 0;
                 display: none;
+                background-color: $megamenubg;
+                box-shadow: 2px 2px 1px 1px $bg1light;
 
                 .col {
 
@@ -544,8 +547,63 @@ footer {
 }
 
 
-.languages {
+.searchres {
     border: 1px solid rgba(255, 255, 255);
+
+    .languagebox {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin: 0 auto;
+        font-family: $fontfamily2;
+        font-weight: normal;
+        align-items: stretch;
+
+        > a {
+            border: 1px solid $fcolor3;
+            transition: all .5s;
+
+            .thmbimg { 
+                width: 100%;
+
+                img {
+                    max-width: 100%;
+                    max-height: 280px;
+                    object-fit: cover;
+                }
+            }
+
+            > div:last-child {
+                // background-color: red;
+                border-top: 1px solid $fcolor2;
+                padding: 1.2rem .6rem;
+
+                h2 {
+                    font-weight: 500;
+                    font-size: clamp(1.2rem, 1.5vw + .8rem, 1.6rem);
+
+                }
+
+                h4 {
+                    color: $fcolor1;
+                    background-color: $bg1;
+                    display: inline-block;
+                    margin: .2rem auto;
+                    padding: 0 .4rem;
+                }
+            }
+        }
+
+        >a:hover {
+            border: 1px solid $fcolor1;
+            box-shadow: 6px 6px 4px 2px $bg1;
+            > div:last-child{
+                border-top: 1px solid $fcolor1;
+            }
+        }
+
+
+    }
 }
 
 
@@ -630,6 +688,15 @@ footer {
         }
 
 
+    }
+
+    .searchres .languagebox {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.6rem;
+
+        >a:hover {
+            box-shadow: 3px 3px 2px 1px $bg1;
+        }
     }
 }
 

@@ -70,14 +70,16 @@ header #navg ul li {
   position: relative;
 }
 header #navg ul li .song_megamenu {
-  border: 1px solid;
+  border: 1px solid #CDEDFF;
   padding: 0.6rem;
   position: absolute;
   min-width: -moz-max-content;
   min-width: max-content;
-  top: 1.6rem;
+  top: 1.4rem;
   left: 0;
   display: none;
+  background-color: #f1faff;
+  box-shadow: 2px 2px 1px 1px rgba(205, 237, 255, 0.1960784314);
 }
 header #navg ul li .song_megamenu .col title {
   background-color: red;
@@ -400,8 +402,52 @@ footer {
   font-size: clamp(0.8rem, 1vw, 1rem);
 }
 
-.languages {
+.searchres {
   border: 1px solid rgb(255, 255, 255);
+}
+.searchres .languagebox {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  align-items: stretch;
+}
+.searchres .languagebox > a {
+  border: 1px solid #333346;
+  transition: all 0.5s;
+}
+.searchres .languagebox > a .thmbimg {
+  width: 100%;
+}
+.searchres .languagebox > a .thmbimg img {
+  max-width: 100%;
+  max-height: 280px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.searchres .languagebox > a > div:last-child {
+  border-top: 1px solid #4B235F;
+  padding: 1.2rem 0.6rem;
+}
+.searchres .languagebox > a > div:last-child h2 {
+  font-weight: 500;
+  font-size: clamp(1.2rem, 1.5vw + 0.8rem, 1.6rem);
+}
+.searchres .languagebox > a > div:last-child h4 {
+  color: #21AEFF;
+  background-color: #CDEDFF;
+  display: inline-block;
+  margin: 0.2rem auto;
+  padding: 0 0.4rem;
+}
+.searchres .languagebox > a:hover {
+  border: 1px solid #21AEFF;
+  box-shadow: 6px 6px 4px 2px #CDEDFF;
+}
+.searchres .languagebox > a:hover > div:last-child {
+  border-top: 1px solid #21AEFF;
 }
 
 @media (width < 920px) {
@@ -457,6 +503,13 @@ footer {
   }
   #singlesong .songSidebar .songSidebar .thumbnail img {
     width: 100%;
+  }
+  .searchres .languagebox {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+  }
+  .searchres .languagebox > a:hover {
+    box-shadow: 3px 3px 2px 1px #CDEDFF;
   }
 }
 @media (width < 474px) {
