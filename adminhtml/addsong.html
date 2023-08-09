@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tiny.cloud/1/mihsmcqeo0ol0aab9ke0v3my6ihnrps2gchk52s0cn723tdn/tinymce/6/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="admin.css">
+    <script src="adminmain.js"></script>
+</head>
+
+<body>
+
+    <section>
+
+        <!-- <h1>hello world</h1>
+    <h2>hello world</h2>
+    <h3>helllo wrold</h3>
+    <h4>hello world</h4>
+    <h5>hello world</h5>
+    <h6>hello world</h6>
+    <p>hello world</p> -->
+
+    </section>
+
+
+    <div id="mybox">
+        <div class="sidebar">
+            <h2>admin panel</h2>
+
+
+            <ul>
+                <li>
+                    <a class="active" href="admin.php"> <i class="fa-brands fa-itunes-note"></i> Songs</a>
+
+                    <ul>
+                        <li class="active"><a href="addblog.php">Add Song</a></li>
+                        <li><a href="addblog.php">All Slogs</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="mainbox">
+            <h2>Add New Song</h2>
+
+            <form action="">
+
+                <div class="form-field">
+                    <label class="l1" for="title">Song Title</label>
+                    <input id="title" type="text" placeholder="Enter song name">
+                </div>
+
+                <div class="form-field">
+                    <label class="l1" for="permalink">Permalink</label>
+                    <input id="permalink" type="text" placeholder="Enter song URL">
+                </div>
+
+
+                <div class="form-field radio">
+                    <input type="radio" id="englsih" name="language" value="english">
+                    <label for="english">English</label>
+                    <input type="radio" id="hindi" name="language" value="hindi">
+                    <label for="hindi">Hindi</label>
+                    <input type="radio" id="marathi" name="language" value="marathi">
+                    <label for="marathi">Marathi</label>
+                    <input type="radio" id="tamil" name="language" value="tamil">
+                    <label for="tamil">Tamil</label>
+                    <input type="radio" id="telegu" name="language" value="telegu">
+                    <label for="telegu">Telegu</label>
+                    <input type="radio" id="malyalam" name="language" value="malyalam">
+                    <label for="malyalam">Malyalam</label>
+                </div>
+
+                <div class="form-field radio">
+                    <input type="checkbox" id="lyrics" name="lyrics" value="lyrics">
+                    <label for="lyrics">Lyrics in Native</label>
+
+                    <input type="checkbox" id="hindilyrics" name="hindilyrics" value="hindilyrics">
+                    <label for="hindilyrics"> Lyrics in Hindi</label>
+
+                    <input type="checkbox" id="hindimeaning" name="hindimeaning" value="hindimeaning">
+                    <label for="hindimeaning"> Meaning in Hindi</label>
+
+                    <input type="checkbox" id="englishlyrics" name="englishlyrics" value="englishlyrics">
+                    <label for="englishlyrics"> Lyrics in English</label>
+
+                    <input type="checkbox" id="englishmeaning" name="englishmeaning" value="englishmeaning">
+                    <label for="englishmeaning"> Meaning in English</label>
+
+
+                    <button id="UpdateTabsForLyrics">Add Lyrics Tabs</button>
+                </div>
+
+                <div class="form-field lyrics-box">
+                    <div>
+                        <label class="l1" for="lyrics">Lyrics</label>
+                        <textarea id="lyrics" class="tinym" name="" rows="14"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-field submit">
+                    <input type="submit" name="addsong" value="Add New Song">
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        tinymce.init({
+            selector: '.tinym',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss',
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject("See docs to implement AI Assistant"))
+        });
+    </script>
+
+</body>
+
+</html>
