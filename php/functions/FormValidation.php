@@ -25,6 +25,8 @@ function validationList(){
                 echo '<li>'.$value.'</li>';
             }
             echo "</ul>";
+            unset($_SESSION['validationErrors']);
+            
         }
     }
 }
