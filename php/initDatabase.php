@@ -6,7 +6,7 @@ include_once 'functions/Utils.php';
 
 //  DEFINE ALL REQUIRE tables and run this page
 
-$tables = [
+$tables = [ 
 
     'songs' => [
         " id INT NOT NULL AUTO_INCREMENT PRIMARY KEY",
@@ -17,6 +17,7 @@ $tables = [
         " hindi_lyrics TEXT",
         " hindi_meaning TEXT",
         " thumbnail VARCHAR(255)",
+        " tag_id INT(50)",
         " song_language VARCHAR(100)",
         " status ENUM('Active', 'Inactive')",
         " created_at DATETIME",
@@ -28,6 +29,14 @@ $tables = [
         " name VARCHAR(100)",
         " meanings_in VARCHAR(255)",
         " lyrics_in VARCHAR(255)",
+    ],
+
+    'tags' => [
+        " id INT NOT NULL AUTO_INCREMENT PRIMARY KEY",
+        " name VARCHAR(100)",
+        " language VARCHAR(100)",
+        " description TEXT",
+        " updated_at DATETIME",
     ],
 
 ];
@@ -57,6 +66,19 @@ $initialSeeds = [
 try {
 
     foreach ($tables as $key => $value) {
+
+        try {
+            $connpdo->query("SELECT 1 FROM $key LIMIT 1") !== FALSE;
+
+        }
+        catch (PDOException $e) {
+            print_r($e->getMessage());
+            echo "<br><br>";
+            $createSQL = CreateTables($connpdo, $tables);
+        }   
+
+
+
         if ($connpdo->query("SELECT 1 FROM $key LIMIT 1") !== FALSE) {
             $connpdo->query("DROP TABLE $key");
             echo "Dropped table <b>$key</b><br>";
@@ -65,8 +87,7 @@ try {
 
 
     $createSQL = CreateTables($connpdo, $tables);
-    print_r($createSQL);
-    echo '<br>';
+    print_r($createSQL); // dont delete this line
 
     if(isset($initialSeeds)){
         if(count($initialSeeds)> 0) {

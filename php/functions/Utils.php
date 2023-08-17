@@ -90,7 +90,7 @@ function CreateTables($conn, $tableArr)
     $sth = $conn->prepare($strings);
     $status = $sth->execute();
     if($status == 1) {
-        return "created all tables";
+        return "created all tables<br>";
     }
     else {
         return "something went wrong!";
@@ -128,7 +128,7 @@ function insertSeeds($conn, $dataArr) {
             }
         }
         $v = count($value);
-        echo "inserted $v rows in $key";
+        echo "inserted $v rows in <b>$key</b>";
         echo "<br>";
     }
 }

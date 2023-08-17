@@ -26,8 +26,10 @@ function getValue($key)
 
 function getError($key) {
     if(isset($_SESSION['validationErrors'][$key])) {
-        echo $_SESSION['validationErrors'][$key];
+        $tempo = $_SESSION['validationErrors'][$key];
+        var_dump($tempo);
         unset($_SESSION['validationErrors'][$key]);
+        return $tempo;
     }
 }
 
@@ -51,16 +53,22 @@ function required($key, $val, $errorMsg = "field is required!")
 
     if ($val === "" || $val === null) {
 
-        if (!isset($_SESSION['validationErrors'])) {
+        if($errorMsg != "field is required!" ){
+            $_SESSION['validationErrors'][$key] = "$errorMsg";
+            return $errorMsg;
         }
+        else {
 
-        $_SESSION['validationErrors'][$key] = "{$key} $errorMsg";
-        return $errorMsg;
+            $_SESSION['validationErrors'][$key] = "{$key} $errorMsg";
+            return $errorMsg;
+        }
 
     } else
         unset($_SESSION['validationErrors'][$key]);
     return true;
 }
+
+
 
 function validEmail($key, $val, $errorMsg = "enter valid email")
 {

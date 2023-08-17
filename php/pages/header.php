@@ -14,13 +14,16 @@
 
 </head>
 
+
+
+
 <body>
 
 
     <div id="mobilesidebar" style="display: none;">
 
         <div class="">
-            <h2 class="logo"> <a href="javascript::void(0)"> GeetKiSeva </a> </h2>
+            <h2 class="logo"> <a href="<?= BASEURL; ?>"> GeetKiSeva </a> </h2>
 
             <ul class="songs">
                 <li><a href="#"> <i class="fa-solid fa-music"></i> English</a></li>
@@ -88,7 +91,7 @@
             </ul>
 
             <div class="logo">
-                <h2> <a href="javascript::void(0)"> GeetKiSeva </a> </h2>
+                <h2> <a href="<?= BASEURL; ?>"> GeetKiSeva </a> </h2>
             </div>
 
             <div class="search-form">

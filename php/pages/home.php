@@ -33,12 +33,12 @@ include 'header.php';
             <div id="langlist">
                 <h3>Listen to all six different languages</h3>
                 <ul>
-                    <li><a href="#"><i class="fa-solid fa-check"></i> <span> English</span></a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i> Hindi </a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i> Marathi</a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i> Tamil</a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i> Telegu</a></li>
-                    <li><a href="#"><i class="fa-solid fa-check"></i> Malayalam</a></li>
+                    <li><a href="<?= BASEURL ?>/english"><i class="fa-solid fa-check"></i> <span> English</span></a></li>
+                    <li><a href="<?= BASEURL ?>/hindi"><i class="fa-solid fa-check"></i> Hindi </a></li>
+                    <li><a href="<?= BASEURL ?>/marathi"><i class="fa-solid fa-check"></i> Marathi</a></li>
+                    <li><a href="<?= BASEURL ?>/tamil"><i class="fa-solid fa-check"></i> Tamil</a></li>
+                    <li><a href="<?= BASEURL ?>/telegu"><i class="fa-solid fa-check"></i> Telegu</a></li>
+                    <li><a href="<?= BASEURL ?>/malaylam"><i class="fa-solid fa-check"></i> Malayalam</a></li>
                 </ul>
             </div>
         </div>
