@@ -14,10 +14,28 @@ function validation_refresh()
 }
 
 
+function validationList(){
+    if(isset($_SESSION['validationErrors'])){
+        if(empty($_SESSION['validationErrors'])){
+            echo '';
+        }
+        else {
+            echo "<ul class='form-errror'>";
+            foreach ($_SESSION["validationErrors"] as $key => $value){
+                echo '<li>'.$value.'</li>';
+            }
+            echo "</ul>";
+        }
+    }
+}
+
+
 function getValue($key)
 {
     if (isset($_SESSION['validationData'][$key])) {
-        echo $_SESSION['validationData'][$key];
+        $temp = $_SESSION['validationData'][$key];
+        unset($_SESSION['validationData'][$key]);
+        return $temp;
     } else {
         echo '';
     }
@@ -27,7 +45,6 @@ function getValue($key)
 function getError($key) {
     if(isset($_SESSION['validationErrors'][$key])) {
         $tempo = $_SESSION['validationErrors'][$key];
-        var_dump($tempo);
         unset($_SESSION['validationErrors'][$key]);
         return $tempo;
     }

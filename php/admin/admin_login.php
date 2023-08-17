@@ -23,13 +23,14 @@
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Login</h3></div>
                                     <div class="card-body">
 
-                                    <?php getError('admin_email')."<br>"; ?>
-                                    <?php getError('admin_password'); ?>
-                                        
 
+                                    <?php
+                                        validationList();
+                                    ?>    
+                                    
                                         <form action="<?= BASEURL ?>/admin_login_submit" method="post">
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" name="admin_email" type="text" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputEmail"  value="<?= getValue('admin_email') ?>" name="admin_email" type="text" placeholder="name@example.com" />
                                                 <label for="inputEmail">Email Or Username</label>
                                             </div>
                                             <div class="form-floating mb-3">

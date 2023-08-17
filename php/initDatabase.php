@@ -39,6 +39,15 @@ $tables = [
         " updated_at DATETIME",
     ],
 
+    'admin_user' => [
+        " id INT NOT NULL AUTO_INCREMENT PRIMARY KEY",
+        " username VARCHAR(100)",
+        " email VARCHAR(100)",
+        " password VARCHAR(512)",
+        " role ENUM('admin', 'editor', 'author')",
+        " updated_at DATETIME",
+    ],
+
 ];
 
 
@@ -47,12 +56,16 @@ $tables = [
 $initialSeeds = [
     'languages' => [
         [null,'english', 'hindi', 'hindi'],   
-        [null,'hindi', 'english', 'english'],   
-        [null,'marathi', 'hindi, english', 'english'],   
-        [null,'tamil', 'hindi, english', 'english, hindi'],   
-        [null,'telegu', 'hindi, english', 'english, hindi'],   
-        [null,'malyalam', 'hindi, english', 'english, hindi']
+        // [null,'hindi', 'english', 'english'],   
+        // [null,'marathi', 'hindi, english', 'english'],   
+        // [null,'tamil', 'hindi, english', 'english, hindi'],   
+        // [null,'telegu', 'hindi, english', 'english, hindi'],   
+        // [null,'malyalam', 'hindi, english', 'english, hindi']
     ],     
+
+    // 'admin_user' => [
+    //     [null,'abcd', null, '1', 'admin', null],   
+    // ],     
 ];
 
 
@@ -65,40 +78,34 @@ $initialSeeds = [
 
 try {
 
-    foreach ($tables as $key => $value) {
 
-        try {
-            $connpdo->query("SELECT 1 FROM $key LIMIT 1") !== FALSE;
-
-        }
-        catch (PDOException $e) {
-            print_r($e->getMessage());
-            echo "<br><br>";
-            $createSQL = CreateTables($connpdo, $tables);
-        }   
+    $table_names = array_keys($tables);
 
 
+    for ($i=0; $i < count($table_names) ; $i++) { 
 
-        if ($connpdo->query("SELECT 1 FROM $key LIMIT 1") !== FALSE) {
-            $connpdo->query("DROP TABLE $key");
-            echo "Dropped table <b>$key</b><br>";
+        if(in_array($table_names[$i], $table_names)){
+            // dropping table
+
+            $st = RunQuery($connpdo, "DROP TABLE IF EXISTS {$table_names[$i]}");
+            echo "Dropped table <b>{$table_names[$i]}</b><br>";
         }
     }
 
+    echo CreateTables($connpdo, $tables);
 
-    $createSQL = CreateTables($connpdo, $tables);
-    print_r($createSQL); // dont delete this line
 
+    // inserting seeds
     if(isset($initialSeeds)){
         if(count($initialSeeds)> 0) {
             insertSeeds($connpdo, $initialSeeds);
         }
     }
 
-
-
-} catch (PDOException $e) {
+}
+catch (Exception $e) {
     print_r($e->getMessage());
 }
+
 
 ?>

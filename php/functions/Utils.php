@@ -13,7 +13,7 @@ function getRunQuery($conn, $mysql, $params = [])
 
 
 
-function RunQuery($conn, $query, $parameterArray = [], $dataAsASSOC = true, $withSUCCESS = true)
+function RunQuery($conn, $query, $parameterArray = [], $dataAsASSOC = true, $withSUCCESS = false)
 {
 
     $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
@@ -54,48 +54,34 @@ function CreateTables($conn, $tableArr)
     $strings = null;
     foreach ($tableArr as $key => $table) {
 
-        $index = array_search($key, array_keys($tableArr));
+        $strings = "CREATE TABLE $key (";
+        for ($i = 0; $i < count($table); $i++) {
+            $strings .= $table[$i];
 
-        if ($index == 0) {
-            $strings = "CREATE TABLE $key (";
-            for ($i = 0; $i < count($table); $i++) {
-                $strings .= $table[$i];
-
-                if ((count($table) - 1) != $i) {
-                    $strings .= ", ";
-                }
+            if ((count($table) - 1) != $i) {
+                $strings .= ", ";
             }
-
-            $strings .= ");";
-
-
-        } else {
-            $strings .= " CREATE TABLE $key (";
-            for ($i = 0; $i < count($table); $i++) {
-                $strings .= $table[$i];
-
-                if ((count($table) - 1) != $i) {
-                    $strings .= ", ";
-                }
-            }
-
-            $strings .= ");";
         }
+
+        $strings .= ");";
+
+        try {
+            RunQuery($conn, $strings);
+        }
+        catch (Exception $e){
+            print_r($e);
+        }
+
+        $strings = '';
 
     }
 
 
     // return $strings;
 
-    $sth = $conn->prepare($strings);
-    $status = $sth->execute();
-    if($status == 1) {
-        return "created all tables<br>";
-    }
-    else {
-        return "something went wrong!";
-    }
+    return "created all tables<br>";
 }
+
 
 
 function insertSeeds($conn, $dataArr) {
@@ -119,16 +105,27 @@ function insertSeeds($conn, $dataArr) {
     
             }
     
-            $sss = "INSERT INTO $key( $colmnNames ) VALUES ( $colmnBindings );";
+            $sss = "INSERT INTO $key ( $colmnNames ) VALUES ( $colmnBindings );";
             try {
-                $res = RunQuery($conn, $sss, $v);
+
+
+                // print_r($v);
+                // print_r($sss);
+
+                // echo "<br>";
+                print_r(getRunQuery($conn, $sss, $v));
+                die;
+
+                // $res = getRunQuery($conn, $sss, $v);
             }
             catch (PDOException $e) {
                 print_r($e->getMessage());
             }
         }
         $v = count($value);
-        echo "inserted $v rows in <b>$key</b>";
-        echo "<br>";
+        // echo "inserted $v rows in <b>$key</b>";
+        // echo "<br>";
+
+        break;
     }
 }
