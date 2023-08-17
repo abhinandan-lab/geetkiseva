@@ -83,49 +83,35 @@ function CreateTables($conn, $tableArr)
 }
 
 
-
 function insertSeeds($conn, $dataArr) {
-    foreach ($dataArr as $key => $value) {
+    foreach ($dataArr as $tableName => $rows) {
 
-        foreach ($value as $k => $v ) {
-            $getCoulmns = RunQuery($conn, "SHOW COLUMNS FROM $key;");
+        $columns = null;
+        $queryTemplate = "INSERT INTO $tableName ($columns) VALUES ";
 
-            $colmnNames = "";
-            $colmnBindings = "";
-            for ($i=0; $i < count($getCoulmns) -1 ; $i++) { 
-    
-                if($i == 0) {
-                    $colmnNames = $getCoulmns[$i]['Field'];
-                    $colmnBindings = ":".$getCoulmns[$i]['Field'];
-                }
-                else {
-                    $colmnNames .= ", " . $getCoulmns[$i]['Field'];
-                    $colmnBindings .= ", :".$getCoulmns[$i]['Field'];
-                }
-    
-            }
-    
-            $sss = "INSERT INTO $key ( $colmnNames ) VALUES ( $colmnBindings );";
-            try {
-
-
-                // print_r($v);
-                // print_r($sss);
-
-                // echo "<br>";
-                print_r(getRunQuery($conn, $sss, $v));
-                die;
-
-                // $res = getRunQuery($conn, $sss, $v);
-            }
-            catch (PDOException $e) {
-                print_r($e->getMessage());
-            }
+        $values = [];
+        foreach ($rows as $row) {
+            $placeholders = array_fill(0, count($row), '?');
+            $values[] = '(' . implode(', ', $placeholders) . ')';
         }
-        $v = count($value);
-        // echo "inserted $v rows in <b>$key</b>";
-        // echo "<br>";
 
-        break;
+        $query = $queryTemplate . implode(', ', $values);
+
+        try {
+            $stmt = $conn->prepare($query);
+
+            // Flatten the array of values for binding
+            $flattenedValues = [];
+            foreach ($rows as $row) {
+                $flattenedValues = array_merge($flattenedValues, array_values($row));
+            }
+
+            $stmt->execute($flattenedValues);
+
+            $rowCount = count($rows);
+            echo "Inserted $rowCount rows into <b>$tableName</b><br>";
+        } catch (PDOException $e) {
+            echo "Error inserting data into $tableName: " . $e->getMessage() . "<br>";
+        }
     }
 }

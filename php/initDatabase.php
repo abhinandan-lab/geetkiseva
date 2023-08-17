@@ -20,8 +20,8 @@ $tables = [
         " tag_id INT(50)",
         " song_language VARCHAR(100)",
         " status ENUM('Active', 'Inactive')",
-        " created_at DATETIME",
-        " updated_at DATETIME",
+        " created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
+        " updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
     ],
 
     'languages' => [
@@ -36,7 +36,7 @@ $tables = [
         " name VARCHAR(100)",
         " language VARCHAR(100)",
         " description TEXT",
-        " updated_at DATETIME",
+        "updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
     ],
 
     'admin_user' => [
@@ -45,7 +45,7 @@ $tables = [
         " email VARCHAR(100)",
         " password VARCHAR(512)",
         " role ENUM('admin', 'editor', 'author')",
-        " updated_at DATETIME",
+        "updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
     ],
 
 ];
@@ -56,16 +56,16 @@ $tables = [
 $initialSeeds = [
     'languages' => [
         [null,'english', 'hindi', 'hindi'],   
-        // [null,'hindi', 'english', 'english'],   
-        // [null,'marathi', 'hindi, english', 'english'],   
-        // [null,'tamil', 'hindi, english', 'english, hindi'],   
-        // [null,'telegu', 'hindi, english', 'english, hindi'],   
-        // [null,'malyalam', 'hindi, english', 'english, hindi']
+        [null,'hindi', 'english', 'english'],   
+        [null,'marathi', 'hindi, english', 'english'],   
+        [null,'tamil', 'hindi, english', 'english, hindi'],   
+        [null,'telegu', 'hindi, english', 'english, hindi'],   
+        [null,'malyalam', 'hindi, english', 'english, hindi']
     ],     
 
-    // 'admin_user' => [
-    //     [null,'abcd', null, '1', 'admin', null],   
-    // ],     
+    'admin_user' => [
+        [null,'abcd', null, '1', 'admin', null],   
+    ],     
 ];
 
 
@@ -94,6 +94,7 @@ try {
 
     echo CreateTables($connpdo, $tables);
 
+    echo "<br>";
 
     // inserting seeds
     if(isset($initialSeeds)){
