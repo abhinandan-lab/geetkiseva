@@ -4,37 +4,22 @@ ini_set('display_errors',1);
 require 'constants.php';
 include_once 'functions/helperFunctions.php';
 
-$INDEX_url = '/geetkiseva/php';
 
-$request = $_SERVER['REQUEST_URI'];
-$router = str_replace($INDEX_url, '', $request);
+$request = str_replace(SERVER_LOCATION, '', $_SERVER['REQUEST_URI']);
+$request = substr($request, 1);
 
- 
+// echo $request;
 
 $ROUTES = [
+
     '/' => 'pages/home.php',
-
     '/english' => 'pages/language.php',
-
-
-
-
-
-
-
-    // testing
-    "/test" => 'pages/test1.php',
-    "/test/(num)" => 'pages/test1.php',
-    '/test2' => 'test2.php',
-    
-     
-    
-    
     
     
     // ADMIN ROUTES---------------------
     '/adminindex' => 'admin/admin_login.php',
     '/admin_login_submit' => 'formactions/adminforms/login_submit.php',
+    '/admin_dashboard' => 'admin/admin_dashboard.php',
 
 
 
@@ -46,17 +31,11 @@ $ROUTES = [
 ];
 
 
-// echo '<pre>';
-// print_r($ROUTES);
-// echo '</pre>';
 
 
-
-
-
-
-
-include_once runRoute($ROUTES, $request, $router);
+// var_dump(runRoute($ROUTES, $request));
+include_once runRoute($ROUTES, $request);
+// include_once "404.php";
 
 
 ?>

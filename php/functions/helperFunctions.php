@@ -1,40 +1,96 @@
 <?php
+
+// include_once "constants.php";
+
 // alpha, alphanum, num, any
-function runRoute($routeArr, $request, $router)
+function runRoute($routeDict, $router)
 {
     // returns the callback url for particular route
-    $routeURLArr = array_keys($routeArr);
+    $routeURLArr_keys = array_keys($routeDict);
     $myArr = explode("/", $router);
 
-
-    // echo '<pre>';
-    // print_r($routeURLArr);
-    // print_r($myArr);
-    // print_r( "count: ". count($myArr) . " <br>");
+    // dd($routeURLArr_keys);
+    // dd($myArr);
 
 
+    $root_url = $myArr[1];
+    $forward_slash_counts = count($myArr);
 
 
-    if (count($myArr) == 3) {
-        $parmeters = $myArr[2];
-        $url = $myArr[1];
+    if ($root_url === "") {
+        // this is index page
+        return $routeDict['/'];
 
-        $parmacheck = checkParmaterType($parmeters);
+    } else {
+        switch ($forward_slash_counts) {
+            case 2:
+                # for ( /one ) variable 
 
-        $u = "/$url/$parmacheck";
+                $url = "/{$myArr[1]}";
 
-        if (in_array($u, $routeURLArr)) {
-            echo $u;
-            return $routeArr[$router];
+                return checkRouteExists($url, $routeURLArr_keys, $routeDict, 1);
+
+                break;
+
+            case 3:
+                # for ( /one/two ) variables
+
+                $a = checkParmaterType($myArr[1]);
+                $b = checkParmaterType($myArr[2]);
+
+                $url = "/{$myArr[1]}/{$myArr[2]}";  //          /course/1
+                $url2 = "/{$myArr[1]}/$b";           //          /course/(num)
+                $url3 = "/$a/$b";                   //          /(alpha)/(num)
+                $url4 = "/$a/{$myArr[2]}";          //          /(alpha)/1
+
+
+
+                if (in_array($url, $routeURLArr_keys)) {
+                    return $routeDict[$url];
+                } elseif (in_array($url2, $routeURLArr_keys)) {
+                    return $routeDict[$url2];
+                } elseif (in_array($url3, $routeURLArr_keys)) {
+                    return $routeDict[$url3];
+                } elseif (in_array($url4, $routeURLArr_keys)) {
+                    return $routeDict[$url4];
+                } else {
+                    // echo "heee";
+
+                    return '404.php';
+                }
+
+
+
+                break;
+
+            default:
+                return '404.php';
+        }
+    }
+}
+
+
+
+function checkRouteExists($url, $routeKeys, $routesDict, $index)
+{
+
+    $ifExists = in_array($url, $routeKeys);
+
+    $url_array = explode('/', $url);
+
+    if ($ifExists) {
+        return $routesDict[$url];
+    } else {
+
+        $myValueType = checkParmaterType($url_array[$index]);
+        $url = "/$myValueType";
+
+        $ifExists = in_array($url, $routeKeys);
+        if ($ifExists) {
+            return $routesDict[$url];
         } else {
             return "404.php";
         }
-    }
-
-    else if (in_array($router, $routeURLArr)) {
-        return $routeArr[$router];
-    } else {
-        return "404.php";
     }
 }
 
@@ -57,17 +113,3 @@ function checkParmaterType($val)
         return "(any)";
     }
 }
-
-
-function checkUnique($conn, $table, $coulmn, $value) {
-    $s = "SELECT * from $table WHERE $coulmn = ?";
-    $resss = RunQuery($conn, $s, [$value]);
-
-    return $resss['success'];
-
-    // print_r($resss);
-}
-
-
-
-?>

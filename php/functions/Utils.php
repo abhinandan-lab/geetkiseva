@@ -115,3 +115,19 @@ function insertSeeds($conn, $dataArr) {
         }
     }
 }
+
+
+function checkInColumn($conn, $tableName, $colName, $val, $returnRow = false){
+
+    try{
+        if($returnRow){
+            $sql = "SELECT * FROM $tableName WHERE $colName LIKE $val";
+            return RunQuery($conn, $sql);
+        }
+    }
+    catch (PDOException $e) {
+        return $e;
+    }
+
+   
+}
