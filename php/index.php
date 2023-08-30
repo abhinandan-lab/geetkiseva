@@ -3,6 +3,7 @@ ini_set('display_errors',1);
 
 require 'constants.php';
 include_once 'functions/helperFunctions.php';
+session_start();
 
 
 $request = str_replace(SERVER_LOCATION, '', $_SERVER['REQUEST_URI']);
@@ -20,6 +21,8 @@ $ROUTES = [
     '/adminindex' => 'admin/admin_login.php',
     '/admin_login_submit' => 'formactions/adminforms/login_submit.php',
     '/admin_dashboard' => 'admin/admin_dashboard.php',
+    '/admin_add_songs' => 'admin/admin_addsongs.php',
+    '/admin_songlist' => 'admin/admin_songlist.php',
 
 
 

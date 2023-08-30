@@ -1,5 +1,7 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 
 function validation_refresh()
@@ -58,6 +60,8 @@ function setValue($key, $value)
 {
     $_SESSION['validationData'][$key] = $value;
 }
+
+
 function setError($key, $value)
 {
     $_SESSION['validationErrors'][$key] = $value;
@@ -74,17 +78,19 @@ function required($key, $val, $errorMsg = "field is required!")
 
         if($errorMsg != "field is required!" ){
             $_SESSION['validationErrors'][$key] = "$errorMsg";
-            return $errorMsg;
+            // return $errorMsg;
+            return true;
         }
         else {
 
             $_SESSION['validationErrors'][$key] = "{$key} $errorMsg";
-            return $errorMsg;
+            // return $errorMsg;
+            return true;
         }
 
     } else
         unset($_SESSION['validationErrors'][$key]);
-    return true;
+    return false;
 }
 
 

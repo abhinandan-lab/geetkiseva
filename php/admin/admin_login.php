@@ -2,16 +2,7 @@
 <?php require_once 'functions/FormValidation.php'; ?>
 
 
-<?php
-
-
-// session already exists!
-if($_SESSION['admin_login'] === true){
-    $url = BASEURL . '/admin_dashboard';
-    header("Location: $url");
-}
-
-?>
+<?php checkSessionAndRedirect('admin_login_id', '/admin_dashboard' ); ?>
 
 
 
