@@ -10,7 +10,15 @@ checkSessionAndRedirect('admin_login_id', false, '/adminindex');
 ?>
 
 <?php include_once 'admin_header.php' ?>
-<?php // include_once 'admin_sidebar.php' ?>
+<div class="sidebar_content def_padding">
+
+
+    sidebar_content
+    lorem1000
+</div>
+</div>
+
+</div>
 
 
 <?php include_once 'admin_footer.php' ?>

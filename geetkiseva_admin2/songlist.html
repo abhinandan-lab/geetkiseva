@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Include DataTables CSS and JS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.js"></script>
+
+</head>
+
+<body>
+
+    <div id="allmain">
+        <div class="head def_padding">
+            head
+        </div>
+
+        <div class="content">
+            <div class="sidebar def_padding">
+                <div class="formgroug">
+
+                    <h2> <i class="fa-solid fa-guitar"></i> Songs</h2>
+
+                    <ul>
+                        <li><a href="addsong.html"> <i class="fa-solid fa-plus"></i> Add Songs</a></li>
+                        <li><a href="#"> <i class="fa-solid fa-list"></i> Song List </a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sidebar_content def_padding">
+
+
+                <h1>Songs </h1><br>
+
+                <table id="example" class="display" style="width:100%">
+                    <thead>
+                        <tr style="text-align: left;">
+                            <th>Sr__id</th>
+                            <th>Song Name</th>
+                            <th>Thumbnail</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1 ___ 2</td>
+                            <td>Yohovah hi karuna nidhan</td>
+                            <td>
+                                <div class="thumbnail">
+                                    <img width="100%" src="Screenshot (1).png" alt="Thumbnail" />
+                                </div>
+                            </td>
+                            <td><a href="edit.html"> <i class="fa-regular fa-pen-to-square"></i> Edit </a> &nbsp; &nbsp;
+                                <a href="edit.html"> <i class="fa-regular fa-trash-can"></i> Delete </a>
+                            </td>
+                        </tr>
+
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "pageLength": 10
+            });
+        });
+    </script>
+
+</body>
+
+</html>
