@@ -17,7 +17,7 @@
     /* ----------background colors------------- */
     --sidebar-color: rgb(226, 255, 228);
     --head-color: rgb(255, 255, 255);
-    --sidebar-content-color: rgb(238, 238, 238);
+    --sidebar-content-color: rgb(245, 245, 245);
 }
 
 body, input, select, textarea{
@@ -81,6 +81,12 @@ a {
 
 a:hover {
     color: var(--link-color-hover);
+}
+
+a.active {
+    background-color:  var(--link-color-hover);
+    color: white;
+    padding: .2rem;
 }
 
 .ml1rem {
@@ -159,6 +165,15 @@ label {
 
 .thumbnail {
     width: 120px;
+}
+
+.name_div > P {
+    margin: 0%;
+}
+
+.name_div {
+    display: flex;
+    flex-direction: column;
 }
 
 

@@ -3,6 +3,9 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// include_once '../config.php';
+include_once 'Utils.php';
+
 
 function validation_refresh()
 {
@@ -50,7 +53,7 @@ function getError($key) {
     if(isset($_SESSION['validationErrors'][$key])) {
         $tempo = $_SESSION['validationErrors'][$key];
         unset($_SESSION['validationErrors'][$key]);
-        return $tempo;
+        return '<span style="color:#df9b00;">'.$tempo.'</span>';
     }
 }
 
@@ -120,6 +123,11 @@ function checkValidations($validateListarr)
             continue;
         }
     }
+}
+
+function uniqueCol($conn, $table, $col, $value) {
+    $s = "SELECT $col FROM $table WHERE ? = ?;";
+    return RunQuery($conn, $s, [$col, $value]);
 }
 
 

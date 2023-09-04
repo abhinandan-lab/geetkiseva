@@ -22,6 +22,7 @@ $ROUTES = [
     '/admin_login_submit' => 'formactions/adminforms/login_submit.php',
     '/admin_dashboard' => 'admin/admin_dashboard.php',
     '/admin_add_songs' => 'admin/admin_addsongs.php',
+    '/admin_add_songs_submit' =>'formactions/adminforms/addsong_form.php',
     '/admin_songlist' => 'admin/admin_songlist.php',
 
 

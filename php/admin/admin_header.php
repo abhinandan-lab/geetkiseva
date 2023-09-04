@@ -7,9 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?= BASEURL ?>/admin/css/index.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js"
-        integrity="sha512-kGk8SWqEKL++Kd6+uNcBT7B8Lne94LjGEMqPS6rpDpeglJf3xpczBSSCmhSEmXfHTnQ7inRXXxKob4ZuJy3WSQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.7.0/tinymce.min.js" integrity="sha512-kGk8SWqEKL++Kd6+uNcBT7B8Lne94LjGEMqPS6rpDpeglJf3xpczBSSCmhSEmXfHTnQ7inRXXxKob4ZuJy3WSQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script async src="<?= BASEURL ?>/admin/js/main.js"></script>
 
     <!-- Include jQuery -->
@@ -24,6 +22,15 @@
 
 </head>
 
+
+<?php
+
+// dd(getURL());
+
+$mypage = getURL()[1];
+
+?>
+
 <body>
 
     <div id="allmain">
@@ -31,15 +38,22 @@
             head
         </div>
 
+
+
+
         <div class="content">
             <div class="sidebar def_padding">
                 <div class="formgroug">
 
                     <h2> <i class="fa-solid fa-guitar"></i> Songs</h2>
 
+
+
+
                     <ul>
-                        <li><a href="<?= BASEURL ?>/admin_add_songs"> <i class="fa-solid fa-plus"></i> Add Songs</a></li>
-                        <li><a href="<?= BASEURL ?>/admin_songlist"> <i class="fa-solid fa-list"></i> Song List </a></li>
+                        <li><a class="<?php if($mypage == 'admin_add_songs'){ echo 'active' ;} ?> " href="<?= BASEURL ?>/admin_add_songs"> <i class="fa-solid fa-plus"></i> Add Songs</a></li>
+                        <li><a class="<?php if($mypage == 'admin_songlist'){ echo 'active' ;} ?>" href="<?= BASEURL ?>/admin_songlist"> <i class="fa-solid fa-list"></i> Song List </a></li>
+                        <li><a class="<?php if($mypage == 'admin_songlist2'){ echo 'active' ;} ?>" href="<?= BASEURL ?>/admin_songlist"> <i class="fa-regular fa-note-sticky"></i> Song Tags </a></li>
                     </ul>
                 </div>
             </div>

@@ -1,15 +1,19 @@
 <?php include_once 'admin_header.php'; ?>
-
+<?php include_once 'functions/FormValidation.php'; ?>
 
 
 <div class="sidebar_content def_padding">
-    <h1>Add New Song</h1>
+    <h1>Add New Song</h1><br>
 
-    <form action="">
+    <form action="<?= BASEURL ?>/admin_add_songs_submit" enctype="multipart/form-data" method="POST">
 
         <div class="formgroug">
-            <input class="def_margin_bottom" type="text" placeholder="Song Title">
-            <input class="def_margin_bottom" type="text" placeholder="Permalink">
+            <?= getError('title'); ?>
+            <input class="def_margin_bottom" value="<?= getValue('title'); ?>" name="title" type="text" placeholder="Song Title">
+            <?= getError('permalink'); ?>
+            <input class="def_margin_bottom" value="<?= getValue('permalink'); ?>" name="permalink" type="text" placeholder="Permalink">
+
+            <input class="def_margin_bottom" value="<?= getValue('release_year'); ?>" name="release_year" type="number" placeholder="Release year ex: 2016 ">
         </div>
 
         <div class="gg"><br>
@@ -48,16 +52,22 @@
         <div class="gg"><br>
             <label class="bg-label">Satus</label>
             <label class="ml1rem">
-                <input type="radio" name="status" value="publish">
+                <input type="radio" name="status" value="Active">
                 Publish
             </label>
 
             <label class="ml1rem">
-                <input type="radio" name="status" value="draft">
+                <input type="radio" name="status" value="Inactive">
                 Draft
             </label>
         </div>
 
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+        <div class="gg"><br>
+            <label class="bg-label" style="height: max-content; margin-bottom: .6rem; ">Song file</label>
+            <input type="file" name="song_file" id="song_file"><br>
+
+        </div>
 
         <div class="gg"><br>
             <label class="bg-label" style="height: max-content; margin-bottom: .6rem; ">Thumbnail</label>
@@ -68,32 +78,40 @@
 
         </div>
 
+        </div>
+
+
+
+
+
+
 
 
         <div class="gg_grid">
             <div class="item">
-                <label class="bg-label">Lyrics</label><br><br>
-                <textarea name="lyrics" id="lyrics" cols="30" rows="10"></textarea>
+                <?= getError('lyrics'); ?> &nbsp;
+                <label class="lyrics bg-label">Lyrics</label><br><br>
+                <textarea name="lyrics" id="lyrics" cols="30" rows="10"><?= getValue('lyrics'); ?></textarea>
             </div>
 
-            <div class="item">
+            <!-- <div class="item">
                 <label class="bg-label">English Lyrics</label><br><br>
-                <textarea name="english_lyrics" id="english_lyrics" cols="30" rows="10"></textarea>
-            </div>
+                <textarea name="english_lyrics" id="english_lyrics" cols="30" rows="10"><?= getValue('english_lyrics'); ?></textarea>
+            </div> -->
 
             <div class="item">
                 <label class="bg-label">Hindi Lyrics</label><br><br>
-                <textarea name="hindi_lyrics" id="hindi_lyrics" cols="30" rows="10"></textarea>
+                <textarea name="hindi_lyrics" id="hindi_lyrics" cols="30" rows="10"><?= getValue('hindi_lyrics'); ?></textarea>
             </div>
 
             <div class="item">
                 <label class="bg-label">Meaning in Hindi</label><br><br>
-                <textarea name="meaning_hindi" id="meaning_hindi" cols="30" rows="10"></textarea>
+                <textarea name="meaning_hindi" id="meaning_hindi" cols="30" rows="10"><?= getValue('meaning_hindi'); ?></textarea>
             </div>
 
             <div class="item">
                 <label class="bg-label">Meaning in English</label><br><br>
-                <textarea name="meaning_english" id="meaning_english" cols="30" rows="10"></textarea>
+                <textarea name="meaning_english" id="meaning_english" cols="30" rows="10"><?= getValue('meaning_english'); ?></textarea>
             </div>
 
         </div>
