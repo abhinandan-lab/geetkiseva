@@ -35,15 +35,21 @@ function runRoute($routeDict, $router)
             case 3:
                 # for ( /one/two ) variables
 
+                // echo "coming herer...";
+
                 $a = checkParmaterType($myArr[1]);
                 $b = checkParmaterType($myArr[2]);
 
+                // dd($routeURLArr_keys);
+                
+                
                 $url = "/{$myArr[1]}/{$myArr[2]}";  //          /course/1
                 $url2 = "/{$myArr[1]}/$b";           //          /course/(num)
                 $url3 = "/$a/$b";                   //          /(alpha)/(num)
                 $url4 = "/$a/{$myArr[2]}";          //          /(alpha)/1
-
-
+                
+                
+                // dd($url2);
 
                 if (in_array($url, $routeURLArr_keys)) {
                     return $routeDict[$url];

@@ -126,8 +126,9 @@ function checkValidations($validateListarr)
 }
 
 function uniqueCol($conn, $table, $col, $value) {
-    $s = "SELECT $col FROM $table WHERE ? = ?;";
-    return RunQuery($conn, $s, [$col, $value]);
+    $s = "SELECT ".$col." FROM ".$table." WHERE ".$col." = ?;";
+    $r = RunQuery($conn, $s, [$value], true, true);
+    return $r['success'];
 }
 
 

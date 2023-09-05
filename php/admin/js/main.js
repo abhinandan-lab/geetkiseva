@@ -1,5 +1,13 @@
-function createTabsforLyrics() {
-    console.log("===============");
+function replaceSpacesWithHyphens(classFrom, classTo) {
+    // Use a regular expression to replace spaces globally with hyphens
+    let stringval =document.querySelector(classFrom).value;
+    let updatedString = stringval.replace(/ /g, '-');
+    document.querySelector(classTo).value = updatedString.toLowerCase();
+}
+
+
+function test(){
+    console.log('helllllllllllo');
 }
 
 

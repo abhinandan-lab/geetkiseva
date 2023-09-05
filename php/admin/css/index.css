@@ -176,4 +176,13 @@ label {
     flex-direction: column;
 }
 
+.name_div > span {
+    color: grey;
+}
+
+.name_div > span span {
+    /* color: var(--link-color-hover); */
+    font-weight: 600;
+}
+
 

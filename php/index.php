@@ -1,5 +1,6 @@
 <?php
 ini_set('display_errors',1);
+date_default_timezone_set('Asia/Kolkata');
 
 require 'constants.php';
 include_once 'functions/helperFunctions.php';
@@ -22,8 +23,12 @@ $ROUTES = [
     '/admin_login_submit' => 'formactions/adminforms/login_submit.php',
     '/admin_dashboard' => 'admin/admin_dashboard.php',
     '/admin_add_songs' => 'admin/admin_addsongs.php',
+    '/admin_edit_song/(num)' => 'admin/admin_songedit.php',
     '/admin_add_songs_submit' =>'formactions/adminforms/addsong_form.php',
+    '/admin_edit_songs_submit/(num)' =>'formactions/adminforms/editsong_form.php',
     '/admin_songlist' => 'admin/admin_songlist.php',
+    '/admin_edit_song' => 'admin/admin_songlist.php',
+    '/admin_delete_song' => 'admin/admin_songlist.php',
 
 
 

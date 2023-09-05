@@ -6,7 +6,8 @@ $serverLocation = SERVER_LOCATION;
 
 define("BASEURL", "http://localhost/$serverLocation");
 define("ADMINFORM", "http://localhost/geetkiseva/php/formactions/adminforms");
-
+define('THUMBNAILS_DIR', '/uploads/thumbnails');
+define('SONGS_DIR', '/uploads/songs');
 
 
 

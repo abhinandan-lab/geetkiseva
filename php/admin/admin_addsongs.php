@@ -9,11 +9,20 @@
 
         <div class="formgroug">
             <?= getError('title'); ?>
-            <input class="def_margin_bottom" value="<?= getValue('title'); ?>" name="title" type="text" placeholder="Song Title">
+            <input oninput="replaceSpacesWithHyphens('.songTitle', '.songPermalink');" class="def_margin_bottom songTitle" value="<?= getValue('title'); ?>" name="title" type="text" placeholder="Song Title">
             <?= getError('permalink'); ?>
-            <input class="def_margin_bottom" value="<?= getValue('permalink'); ?>" name="permalink" type="text" placeholder="Permalink">
+            <input  class="def_margin_bottom songPermalink" value="<?= getValue('permalink'); ?>" name="permalink" type="text" placeholder="Permalink">
 
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
             <input class="def_margin_bottom" value="<?= getValue('release_year'); ?>" name="release_year" type="number" placeholder="Release year ex: 2016 ">
+
+            <input class="def_margin_bottom" value="<?= getValue('song_number'); ?>" name="song_number" type="number" placeholder="Song number ( optional )">
+
+            </div>
+<!-- 
+            <input class="def_margin_bottom" value="<?= getValue('release_year'); ?>" name="release_year" type="number" placeholder="Release year ex: 2016 "> -->
+
+            <input class="def_margin_bottom" value="<?= getValue('singer_name'); ?>" name="singer_name" type="text" placeholder="Author/Singer name ( optional )">
         </div>
 
         <div class="gg"><br>
@@ -64,7 +73,9 @@
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
         <div class="gg"><br>
+            
             <label class="bg-label" style="height: max-content; margin-bottom: .6rem; ">Song file</label>
+            <?= getError('song_file'); ?>
             <input type="file" name="song_file" id="song_file"><br>
 
         </div>
