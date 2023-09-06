@@ -1,93 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-            color: #333;
-        }
-        
-        header {
-            background-color: #007BFF;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-        
-        nav {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-        }
-        
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        
-        section {
-            padding: 20px;
-            margin: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inputs Wrapped Inside Labels</title>
 </head>
 <body>
-    <header>
-        <h1>My Website</h1>
-    </header>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Contact</a>
-    </nav>
-    <section>
-        <h2>Welcome to our website!</h2>
-        <p>This is a sample section with some content.</p>
-    </section>
-    <footer>
-        &copy; 2023 My Website. All rights reserved.
-    </footer>
+    <form>
+        <label>
+            <input type="checkbox" name="fruits[]" value="apple">
+            Apple
+        </label><br>
+        
+        <label>
+            <input type="checkbox" name="fruits[]" value="banana">
+            Banana
+        </label><br>
+        
+        <label>
+            <input type="checkbox" name="fruits[]" value="cherry">
+            Cherry
+        </label><br>
+        
+        <label>
+            <input type="checkbox" name="fruits[]" value="date">
+            Date
+        </label><br>
+        
+        <label>
+            <input type="checkbox" name="fruits[]" value="grape">
+            Grape
+        </label><br>
+        
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
-<form action="">
-    <input type="text" name="username" placeholder="asdf">
-    <input type="password" name="password">
-    <textarea name="message"></textarea>
-    <input type="radio" name="gender" value="male"> Male
-    <input type="radio" name="gender" value="female"> Female
-    <input type="checkbox" name="subscribe" value="yes"> Subscribe to newsletter
-    <select name="country">
-        <option value="us">United States</option>
-        <option value="ca">Canada</option>
-        <option value="uk">United Kingdom</option>
-    </select>
-    <input type="file" name="upload">
-    <input type="number" name="quantity" min="1" max="10">
-    <input type="date" name="birthdate">
-    <input type="email" name="email">
-    <input type="url" name="website">
-    <input type="color" name="color">
-    <input type="range" name="volume" min="0" max="100">
-    <input type="search" name="search">
-
-    <br>
-
-    
-                        
-</form>

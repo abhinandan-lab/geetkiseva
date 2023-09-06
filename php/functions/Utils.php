@@ -47,6 +47,47 @@ function RunQuery($conn, $query, $parameterArray = [], $dataAsASSOC = true, $wit
 
 }
 
+function getColRunQuery($conn, $query, $parameterArray = [], $colName, $dataAsASSOC = true, $withSUCCESS = false)
+{
+
+    $conn->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+
+    if (($stmt = $conn->prepare($query)) === false) {
+
+        return $conn->errorInfo();
+
+
+
+    } elseif ($stmt->execute($parameterArray) === false) {
+
+        return $stmt->errorInfo();
+
+
+
+    } else {
+
+        $red = $stmt->fetchAll($dataAsASSOC ? PDO::FETCH_ASSOC : PDO::FETCH_NUM);
+        $newRed = [];
+        foreach ($red as $key => $value) {
+            array_push($newRed, $value[$colName]);
+        }
+
+
+
+
+        if($withSUCCESS) {
+            $newRed['success'] = $stmt->rowCount(); // returns the count of affected rows
+            return $newRed;
+        }
+        else {
+            return $newRed;
+        }
+
+
+    }
+
+}
+
 
 function CreateTables($conn, $tableArr)
 {

@@ -1,3 +1,4 @@
+<?php checkSessionAndRedirect('admin_login_id', false, '/adminindex'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,7 +54,7 @@ $mypage = getURL()[1];
                     <ul>
                         <li><a class="<?php if($mypage == 'admin_add_songs'){ echo 'active' ;} ?> " href="<?= BASEURL ?>/admin_add_songs"> <i class="fa-solid fa-plus"></i> Add Songs</a></li>
                         <li><a class="<?php if($mypage == 'admin_songlist'){ echo 'active' ;} ?>" href="<?= BASEURL ?>/admin_songlist"> <i class="fa-solid fa-list"></i> Song List </a></li>
-                        <li><a class="<?php if($mypage == 'admin_songlist2'){ echo 'active' ;} ?>" href="<?= BASEURL ?>/admin_songlist"> <i class="fa-regular fa-note-sticky"></i> Song Tags </a></li>
+                        <li><a class="<?php if($mypage == 'admin_song_tags'){ echo 'active' ;} ?>" href="<?= BASEURL ?>/admin_song_tags"> <i class="fa-regular fa-note-sticky"></i> Song Tags </a></li>
                     </ul>
                 </div>
             </div>

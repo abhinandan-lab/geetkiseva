@@ -1,5 +1,5 @@
 <?php include_once 'admin_header.php'; ?>
-
+<?php  checkSessionAndRedirect('admin_login_id', false, '/adminindex'); ?>
 <?php
 
 include_once 'config.php';

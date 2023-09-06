@@ -37,10 +37,15 @@ $tables = [
     'tags' => [
         " id INT NOT NULL AUTO_INCREMENT PRIMARY KEY",
         " name VARCHAR(100)",
-        " song_id INT",
         " language VARCHAR(100)",
         " description TEXT",
         "updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP",
+    ],
+
+    'tag_data' => [
+        " id INT NOT NULL AUTO_INCREMENT PRIMARY KEY",
+        "song_id INT NOT NULL",
+        "tag_id INT NOT NULL",
     ],
 
     'admin_user' => [
@@ -69,7 +74,13 @@ $initialSeeds = [
 
     'admin_user' => [
         [null,'abcd', null, '1', 'admin', null],   
-    ],     
+    ],   
+    
+    'tags' => [
+        [null, 'My Fav Songs', null, 'My list of songs which are my faviourate songs!', null],   
+        [null,'TPM hindi Song 2021', 'hindi', 'Contains all hindi songs which came in 2021', null],   
+        [null,'TPM Songs 2022', null, 'Contains all songs sung at PC ground', null],   
+    ],   
 ];
 
 

@@ -36,7 +36,6 @@ function validationList(){
     }
 }
 
-
 function getValue($key)
 {
     if (isset($_SESSION['validationData'][$key])) {
@@ -71,7 +70,6 @@ function setError($key, $value)
 }
 
 
-
 function required($key, $val, $errorMsg = "field is required!")
 {
 
@@ -95,7 +93,6 @@ function required($key, $val, $errorMsg = "field is required!")
         unset($_SESSION['validationErrors'][$key]);
     return false;
 }
-
 
 
 function validEmail($key, $val, $errorMsg = "enter valid email")

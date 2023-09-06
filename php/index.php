@@ -22,15 +22,22 @@ $ROUTES = [
     '/adminindex' => 'admin/admin_login.php',
     '/admin_login_submit' => 'formactions/adminforms/login_submit.php',
     '/admin_dashboard' => 'admin/admin_dashboard.php',
+
     '/admin_add_songs' => 'admin/admin_addsongs.php',
     '/admin_edit_song/(num)' => 'admin/admin_songedit.php',
     '/admin_add_songs_submit' =>'formactions/adminforms/addsong_form.php',
-    '/admin_edit_songs_submit/(num)' =>'formactions/adminforms/editsong_form.php',
-    '/admin_songlist' => 'admin/admin_songlist.php',
+    '/admin_edit_songs_submit' =>'formactions/adminforms/editsong_form.php',
     '/admin_edit_song' => 'admin/admin_songlist.php',
-    '/admin_delete_song' => 'admin/admin_songlist.php',
-
-
+    
+    '/admin_songlist' => 'admin/admin_songlist.php',
+    '/admin_delete_song/(num)' => 'admin/admin_del_song.php',
+    
+    '/admin_song_tags' => 'admin/admin_songtags.php',
+    '/admin_song_tagedit/(num)' => 'admin/admin_tagedit.php',
+    '/admin_addtag_submit' =>'formactions/adminforms/add_tag_submit.php',
+    '/admin_tag_delete/(num)' =>'admin/admin_del_tag.php',
+    
+    
 
     // run database init
     '/initDatabase' => 'initDatabase.php',

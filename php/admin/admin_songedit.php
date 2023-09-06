@@ -1,6 +1,6 @@
 <?php include_once 'admin_header.php'; ?>
 <?php include_once 'functions/FormValidation.php'; ?>
-
+<?php checkSessionAndRedirect('admin_login_id', false, '/adminindex'); ?>
 
 
 <?php
@@ -14,6 +14,14 @@ $songid = getURL()[2];
 
 
 $songData = RunQuery($connpdo, "SELECT * FROM songs WHERE id = ?", [$songid]);
+
+$serverTags = RunQuery($connpdo, "SELECT * FROM tags");
+$song_tags = getColRunQuery($connpdo, "SELECT `tag_id` FROM `tag_data` WHERE `song_id` = ?;", [$songid], 'tag_id');
+
+
+// dd($song_tags);
+
+// die;
 
 $songData = $songData[0];
 
@@ -34,15 +42,16 @@ $songData = $songData[0];
             <?= getError('permalink'); ?>
             <input class="def_margin_bottom songPermalink" value="<?= $songData['permalink'] ?>" name="permalink" type="text" placeholder="Permalink">
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem">
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem">
                 <input class="def_margin_bottom" value="<?= $songData['release_year'] ?>" name="release_year" type="number" placeholder="Release year ex: 2016 ">
 
                 <input class="def_margin_bottom" value="<?= $songData['song_number'] ?>" name="song_number" type="number" placeholder="Song number ( optional )">
 
+                <input class="def_margin_bottom" value="<?= $songData['singer_name'] ?>" name="singer_name" type="text" placeholder="Author/Singer name ( optional )">
             </div>
 
 
-            <input class="def_margin_bottom" value="<?= $songData['singer_name'] ?>" name="singer_name" type="text" placeholder="Author/Singer name ( optional )">
+
         </div>
 
         <div class="gg"><br>
@@ -90,6 +99,31 @@ $songData = $songData[0];
             </label>
         </div>
 
+        <br>
+        <div class="gg tags_div">
+            <fieldset>
+                <legend>Available Tags</legend>
+
+
+                <?php foreach ($serverTags as $k => $tag) : ?>
+
+                    <label class="ml1rem">
+                        <input <?php if (isset($song_tags[$k])) {
+                                    if ($song_tags[$k] == $tag['id']) {
+                                        echo "checked";
+                                    }
+                                }
+                                ?> type="checkbox" name="tags[]" value="<?= $tag['id'] ?>">
+                        <?= $tag['name'] ?>
+                    </label>
+
+                <?php endforeach; ?>
+
+
+            </fieldset>
+        </div>
+
+
         <div class="gg"><br>
             <label class="bg-label">Satus</label>
             <label class="ml1rem">
@@ -126,7 +160,7 @@ $songData = $songData[0];
             <div class="gg"><br>
                 <label class="bg-label" style="height: max-content; margin-bottom: .6rem; ">Thumbnail</label>
                 <div style="display: block;" class="img_preview mb1rem" id="imgPreviewContainer">
-                    <img id="imagePreview" src="<?= BASEURL.THUMBNAILS_DIR ?>/<?= $songData['thumbnail']; ?>" width="200px" alt="Preview Image">
+                    <img id="imagePreview" src="<?= BASEURL . THUMBNAILS_DIR ?>/<?= $songData['thumbnail']; ?>" width="200px" alt="Preview Image">
                 </div>
                 <span style="color:purple;"><?= $songData['thumbnail']; ?></span><br><br>
                 <input type="file" name="thumbnail" id="thumbnailInput" onchange="previewImage(event)"><br>
@@ -169,7 +203,7 @@ $songData = $songData[0];
 
         <div class="gg">
             <br>
-            <button style="width: 100%;" type="submit"> <i class="fa-regular fa-floppy-disk"></i> &nbsp;  Update Song</button>
+            <button style="width: 100%;" type="submit"> <i class="fa-regular fa-floppy-disk"></i> &nbsp; Update Song</button>
             <br>
             <br>
         </div>

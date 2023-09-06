@@ -11,6 +11,7 @@ $thumbnailFiles_dir = __DIR__ . '/../../uploads/thumbnails/';
 
 
 
+
 $title = $_POST['title'];
 $permalink = $_POST['permalink'];
 $songyear = $_POST['release_year'];
@@ -24,6 +25,9 @@ $lyrics = $_POST['lyrics'];
 $hindi_lyrics = $_POST['hindi_lyrics'];
 $hindi_meain = $_POST['meaning_hindi'];
 $englsih_mean = $_POST['meaning_english'];
+
+
+$tags = $_POST['tags'];
 
 
 // validation
@@ -81,6 +85,22 @@ else {
 
 
         $res = RunQuery($connpdo, $s, $arr_s);
+
+
+
+        // inserting tags
+
+        $latestEntry = RunQuery($connpdo, "SELECT id FROM `songs` ORDER BY `id` DESC LIMIT 1");
+
+
+        foreach ($tags as $t ){
+            
+            $ss = "INSERT INTO `tag_data` (`song_id`, `tag_id`) VALUES (?,?);";
+            $rr = RunQuery($connpdo, $ss, [$latestEntry[0]['id'], $t]);
+
+        }
+
+
 
 
         $url = BASEURL . '/admin_songlist';
