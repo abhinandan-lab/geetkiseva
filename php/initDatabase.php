@@ -77,9 +77,12 @@ $initialSeeds = [
     ],   
     
     'tags' => [
-        [null, 'My Fav Songs', null, 'My list of songs which are my faviourate songs!', null],   
-        [null,'TPM hindi Song 2021', 'hindi', 'Contains all hindi songs which came in 2021', null],   
-        [null,'TPM Songs 2022', null, 'Contains all songs sung at PC ground', null],   
+        [null, 'Hindi Songs ', 'hindi', 'TPM hindi songs randomly', null],   
+        [null, 'Marathi Songs ', 'marathi', 'TPM marathi songs randomly', null],   
+        [null, 'Tamil Songs ', 'tamil', 'TPM tamil songs randomly', null],   
+        [null, 'Malyalam Songs ', 'malyalam', 'TPM malyalam songs randomly', null],   
+        [null, 'Telegu Songs ', 'telegu', 'TPM telegu songs randomly', null],   
+        [null, 'English Songs ', 'english', 'TPM english songs randomly', null],    
     ],   
 ];
 

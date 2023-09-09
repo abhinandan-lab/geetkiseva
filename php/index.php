@@ -16,8 +16,29 @@ $ROUTES = [
 
     '/' => 'pages/home.php',
     '/english' => 'pages/language.php',
+    '/hindi' => 'pages/language.php',
+    '/marathi' => 'pages/language.php',
+    '/tamil' => 'pages/language.php',
+    '/telegu' => 'pages/language.php',
+    '/malyalam' => 'pages/language.php',
+
+    '/english-tag/(num)' => 'pages/language_tag.php',
+    '/hindi-tag/(num)' => 'pages/language_tag.php',
+    '/marathi-tag/(num)' => 'pages/language_tag.php',
+    '/tamil-tag/(num)' => 'pages/language_tag.php',
+    '/telegu-tag/(num)' => 'pages/language_tag.php',
+    '/malyalam-tag/(num)' => 'pages/language_tag.php',
     
+    '/english/(num)' => 'pages/song_page.php',
+    '/hindi/(num)' => 'pages/song_page.php',
+    '/marathi/(num)' => 'pages/song_page.php',
+    '/tamil/(num)' => 'pages/song_page.php',
+    '/telegu/(num)' => 'pages/song_page.php',
+    '/malyalam/(num)' => 'pages/song_page.php',
     
+
+
+
     // ADMIN ROUTES---------------------
     '/adminindex' => 'admin/admin_login.php',
     '/admin_login_submit' => 'formactions/adminforms/login_submit.php',
@@ -40,7 +61,7 @@ $ROUTES = [
     
 
     // run database init
-    '/initDatabase' => 'initDatabase.php',
+    // '/initDatabase' => 'initDatabase.php',
 
 
 
@@ -49,9 +70,7 @@ $ROUTES = [
 
 
 
-// var_dump(runRoute($ROUTES, $request));
 include_once runRoute($ROUTES, $request);
-// include_once "404.php";
 
 
 ?>

@@ -69,7 +69,7 @@ header #navg ul li {
   font-family: "Poppins", sans-serif;
   position: relative;
 }
-header #navg ul li .song_megamenu {
+header #navg ul li .song_megamenu, header #navg ul li .ym_megamenu {
   border: 1px solid #CDEDFF;
   padding: 0.6rem;
   position: absolute;
@@ -78,11 +78,16 @@ header #navg ul li .song_megamenu {
   top: 1.4rem;
   left: 0;
   display: none;
+  gap: 1rem;
   background-color: #f1faff;
   box-shadow: 2px 2px 1px 1px rgba(205, 237, 255, 0.1960784314);
 }
-header #navg ul li .song_megamenu .col title {
-  background-color: red;
+header #navg ul li .song_megamenu .col, header #navg ul li .ym_megamenu .col {
+  display: flex;
+  flex-direction: column;
+}
+header #navg ul li .song_megamenu .col a, header #navg ul li .ym_megamenu .col a {
+  margin-bottom: 0.1rem;
 }
 header #navg ul li a {
   color: #4B235F;
@@ -92,7 +97,7 @@ header #navg ul li a:hover {
   color: #21AEFF;
 }
 header #navg ul li:hover .song_megamenu {
-  display: block;
+  display: flex;
 }
 header #navg .logo {
   font-family: "Playfair Display SC", serif;

@@ -89,7 +89,7 @@ header {
             font-family: $fontfamily2;
             position: relative;
 
-            .song_megamenu {
+            .song_megamenu, .ym_megamenu {
                 border: 1px solid $bg1;
                 padding: .6rem;
                 position: absolute;
@@ -97,14 +97,17 @@ header {
                 top: 1.4rem;
                 left: 0;
                 display: none;
+                gap: 1rem;
                 background-color: $megamenubg;
                 box-shadow: 2px 2px 1px 1px $bg1light;
 
                 .col {
+                    display: flex;
+                    flex-direction: column;
 
 
-                    title {
-                        background-color: red;
+                    a {
+                        margin-bottom: .1rem;
                     }
 
                 }
@@ -123,7 +126,7 @@ header {
         ul li:hover {
 
             .song_megamenu {
-                display: block;
+                display: flex;
             }
 
         }

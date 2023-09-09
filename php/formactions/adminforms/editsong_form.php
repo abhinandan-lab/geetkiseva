@@ -69,8 +69,8 @@ else {
         if (!empty($_FILES['thumbnail']['name'])) {
 
 
-            $thumbnailTargetFile = $thumbnailFiles_dir . $time_stamp . '___' . basename($_FILES['thumbnail']['name']);
-            $db_thumbnail_name =  $time_stamp . '___' . basename($_FILES['thumbnail']['name']);
+            $thumbnailTargetFile = $thumbnailFiles_dir . basename($_FILES['thumbnail']['name']);
+            $db_thumbnail_name = basename($_FILES['thumbnail']['name']);
             $res2 = move_uploaded_file($_FILES["thumbnail"]["tmp_name"], $thumbnailTargetFile);
         }
 

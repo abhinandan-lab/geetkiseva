@@ -38,7 +38,7 @@ include_once 'header.php';
                     <li><a href="<?= BASEURL ?>/marathi"><i class="fa-solid fa-check"></i> Marathi</a></li>
                     <li><a href="<?= BASEURL ?>/tamil"><i class="fa-solid fa-check"></i> Tamil</a></li>
                     <li><a href="<?= BASEURL ?>/telegu"><i class="fa-solid fa-check"></i> Telegu</a></li>
-                    <li><a href="<?= BASEURL ?>/malaylam"><i class="fa-solid fa-check"></i> Malayalam</a></li>
+                    <li><a href="<?= BASEURL ?>/malyalam"><i class="fa-solid fa-check"></i> Malayalam</a></li>
                 </ul>
             </div>
         </div>
