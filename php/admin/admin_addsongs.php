@@ -63,8 +63,8 @@ $serverTags = RunQuery($connpdo, "SELECT * FROM tags");
             </label>
 
             <label class="ml1rem">
-                <input type="radio" name="language" value="telugu">
-                Telugu
+                <input type="radio" name="language" value="telegu">
+                Telegu
             </label>
 
             <label class="ml1rem">

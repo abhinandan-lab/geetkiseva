@@ -111,7 +111,7 @@ else {
         $url = BASEURL . '/admin_songlist';
         echo "<script>
         alert(\"Song Updated successfully!\");
-        window.location.href = '$url';
+        //window.location.href = '$url';
         </script>";
     } catch (Exception $e) {
         print_r($e);

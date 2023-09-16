@@ -6,8 +6,9 @@ include_once 'functions/Utils.php';
 
 $lanugae =  getURL()[1];
 
+$ssql = "SELECT t.*, s.thumbnail AS banner FROM tags t LEFT JOIN ( SELECT thumbnail FROM songs WHERE song_language = ? AND status = 'Active' ORDER BY thumbnail LIMIT 1 ) s ON 1=1 WHERE t.language = ?;";
 
-$lang_tags = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `language` LIKE ?", [$lanugae]);
+$lang_tags = RunQuery($connpdo, $ssql, [$lanugae, $lanugae]);
 
 // dd($lang_tags);
 
@@ -28,7 +29,11 @@ $lang_tags = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `language` LIKE ?", 
 
                         <a href="<?= BASEURL ?>/<?= $lanugae ?>-tag/<?= $value['id'] ?>">
                             <div class="thmbimg">
-                                <img src="<?= BASEURL ?>/public/banner.png" alt="thumbnail image">
+                                <?php if (!empty($value['banner'])) : ?>
+                                    <img src="<?= BASEURL . THUMBNAILS_DIR ?>/<?= $value['banner'] ?>" alt="thumbnail image">
+                                <?php else : ?>
+                                    <img src="<?= BASEURL ?>/public/banner.png" alt="thumbnail image">
+                                <?php endif; ?>
                             </div>
                             <div>
                                 <h2><?= $value['name'] ?></h2>

@@ -487,7 +487,8 @@ footer {
 
         #main-content {
             margin: 2rem 0;
-            font-size: clamp(1.2rem, .8vw + 1.2rem, 1.6rem);
+            // font-size: clamp(1.2rem, .8vw + 1.2rem, 1.6rem);
+            font-size: 1.2rem; 
         }
 
     }

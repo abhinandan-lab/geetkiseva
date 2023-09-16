@@ -10,7 +10,6 @@ session_start();
 $request = str_replace(SERVER_LOCATION, '', $_SERVER['REQUEST_URI']);
 $request = substr($request, 1);
 
-// echo $request;
 
 $ROUTES = [
 
@@ -29,12 +28,12 @@ $ROUTES = [
     '/telegu-tag/(num)' => 'pages/language_tag.php',
     '/malyalam-tag/(num)' => 'pages/language_tag.php',
     
-    '/english/(num)' => 'pages/song_page.php',
-    '/hindi/(num)' => 'pages/song_page.php',
-    '/marathi/(num)' => 'pages/song_page.php',
-    '/tamil/(num)' => 'pages/song_page.php',
-    '/telegu/(num)' => 'pages/song_page.php',
-    '/malyalam/(num)' => 'pages/song_page.php',
+    '/english/(any)' => 'pages/song_page.php',
+    '/hindi/(any)' => 'pages/song_page.php',
+    '/marathi/(any)' => 'pages/song_page.php',
+    '/tamil/(any)' => 'pages/song_page.php',
+    '/telegu/(any)' => 'pages/song_page.php',
+    '/malyalam/(any)' => 'pages/song_page.php',
     
 
 

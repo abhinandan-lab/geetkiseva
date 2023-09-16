@@ -363,7 +363,7 @@ footer {
 }
 #singlesong > div:first-child #main-content {
   margin: 2rem 0;
-  font-size: clamp(1.2rem, 0.8vw + 1.2rem, 1.6rem);
+  font-size: 1.2rem;
 }
 #singlesong > div:last-child {
   max-width: 340px;

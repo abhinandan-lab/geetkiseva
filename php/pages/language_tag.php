@@ -8,9 +8,12 @@ include_once 'functions/Utils.php';
 
 $tag_id = getURL()[2];
 
+$_SESSION['current_tag_id'] = $tag_id;
+
 $tag_row = RunQuery($connpdo, "SELECT * FROM tags WHERE id = ?", [$tag_id]);
 $tag_row = $tag_row[0];
 
+// dd($tag_row);
 
 $tt = "SELECT songs.* FROM songs JOIN tag_data ON songs.id = tag_data.song_id WHERE tag_data.tag_id = ?;";
 $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
@@ -35,10 +38,10 @@ $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
 
                     <?php foreach ($tag_songs as $key => $value) : ?>
 
-
+                        <?php // dd($value); ?>
                         <div class="item">
                             <div>
-                                <h3><a href="<?= BASEURL ?>/<?= $value['song_language'] ?>/<?= $value['id'] ?>"><?= $value['title'] ?></a></h3>
+                                <h3><a href="<?= BASEURL ?>/<?= $value['song_language'] ?>/<?= $value['permalink'] ?>"><?= $value['title'] ?></a></h3>
                                 <ul>
                                     <li>
                                         <p>Language <span><?= ucfirst($value['song_language']) ?></span></p>
