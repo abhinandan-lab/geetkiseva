@@ -42,6 +42,9 @@ else if($User[0]['password'] == $pass){
     $_SESSION['admin_login'] = true;
     $_SESSION['admin_login_id'] = $User[0]['id'];
     $_SESSION['admin_userName'] = $User[0]['username'];
+    $u = $User[0]['username'];
+
+    setFlashMessage('success', "Login successfull $u");
 
 
     // login successful

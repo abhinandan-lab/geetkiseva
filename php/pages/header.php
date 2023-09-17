@@ -25,7 +25,7 @@ $tagsHindi = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `language` LIKE 'hin
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+    <link rel="icon" type="image/x-icon" href="<?= BASEURL ?>/admin/assets/img/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<?= BASEURL ?>/public/style.css">
     <script defer src="<?= BASEURL ?>/public/main.js"></script>
@@ -36,6 +36,8 @@ $tagsHindi = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `language` LIKE 'hin
 
 
 <body>
+
+    <?php include_once 'functions/alertcode.php' ?>
 
 
     <div id="mobilesidebar" style="display: none;">
@@ -65,47 +67,47 @@ $tagsHindi = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `language` LIKE 'hin
                     <div class="song_megamenu">
                         <div class="col">
                             <h3><a href="<?= BASEURL ?>/english">Englsih</a></h3>
-                            <?php foreach ($tagsEng as $key => $value): ?>
+                            <?php foreach ($tagsEng as $key => $value) : ?>
                                 <a href="<?= BASEURL ?>/english-tag/<?= $value['id'] ?>"><?= $value['name'] ?></a>
                             <?php endforeach; ?>
                         </div>
 
                         <div class="col">
                             <h3><a href="<?= BASEURL ?>/hindi">Hindi</a></h3>
-                            <?php foreach ($tagsHindi as $key => $value): ?>
+                            <?php foreach ($tagsHindi as $key => $value) : ?>
                                 <a href="<?= BASEURL ?>/hindi-tag/<?= $value['id'] ?>"><?= $value['name'] ?></a>
                             <?php endforeach; ?>
                         </div>
 
                         <div class="col">
                             <h3><a href="<?= BASEURL ?>/marathi">Marathi</a></h3>
-                            <?php foreach ($tagsMar as $key => $value): ?>
+                            <?php foreach ($tagsMar as $key => $value) : ?>
                                 <a href="<?= BASEURL ?>/marathi-tag/<?= $value['id'] ?>"><?= $value['name'] ?></a>
                             <?php endforeach; ?>
                         </div>
 
                         <div class="col">
                             <h3><a href="<?= BASEURL ?>/tamil">Tamil</a></h3>
-                            <?php foreach ($tagsTam as $key => $value): ?>
+                            <?php foreach ($tagsTam as $key => $value) : ?>
                                 <a href="<?= BASEURL ?>/tamil-tag/<?= $value['id'] ?>"><?= $value['name'] ?></a>
                             <?php endforeach; ?>
                         </div>
 
                         <div class="col">
                             <h3><a href="<?= BASEURL ?>/telegu">Telegu</a></h3>
-                            <?php foreach ($tagsTele as $key => $value): ?>
+                            <?php foreach ($tagsTele as $key => $value) : ?>
                                 <a href="<?= BASEURL ?>/telegu-tag/<?= $value['id'] ?>"><?= $value['name'] ?></a>
                             <?php endforeach; ?>
                         </div>
-                        
+
                         <div class="col">
                             <h3><a href="<?= BASEURL ?>/malyalam">Malyalam</a></h3>
-                            <?php foreach ($tagsMal as $key => $value): ?>
+                            <?php foreach ($tagsMal as $key => $value) : ?>
                                 <a href="<?= BASEURL ?>/malyalam-tag/<?= $value['id'] ?>"><?= $value['name'] ?></a>
                             <?php endforeach; ?>
                         </div>
 
-                    
+
 
                     </div>
                 </li>

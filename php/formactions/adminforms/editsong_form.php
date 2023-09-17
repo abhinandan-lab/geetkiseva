@@ -43,7 +43,7 @@ $c = required('lyrics', $_POST['lyrics']);
 
 
 if ($a == true || $b == true || $c == true) {
-    $url = BASEURL . '/admin_add_songs';
+    $url = BASEURL . "/admin_edit_song/$song_id";
     header("Location: $url");
 }
 
@@ -108,11 +108,13 @@ else {
         }
 
 
-        $url = BASEURL . '/admin_songlist';
-        echo "<script>
-        alert(\"Song Updated successfully!\");
-        //window.location.href = '$url';
-        </script>";
+        $url = BASEURL . "/admin_edit_song/$song_id";
+
+        setFlashMessage('success', "Update song success");
+
+        dd($url);
+        header("Location: $url");
+
     } catch (Exception $e) {
         print_r($e);
     }

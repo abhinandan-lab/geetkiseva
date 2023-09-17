@@ -11,16 +11,6 @@ define('SONGS_DIR', '/uploads/songs');
 
 
 
-
-
-
-
-
-
-
-
-
-
 function dd($ke)
 {
 
@@ -61,16 +51,12 @@ function checkSessionAndRedirect($sessionValue, $sessExistRedirect = false, $ses
             header("Location: $url");
             // return false;
         }
-    }
-
-    else {
-        if($sessNotExistRedirect){
+    } else {
+        if ($sessNotExistRedirect) {
             $url = BASEURL . $sessNotExistRedirect;
             header("Location: $url");
         }
     }
-
-
 }
 
 
@@ -84,5 +70,35 @@ function checkSession($sessionValue)
         return true;
     } else {
         return false;
+    }
+}
+
+
+function setFlashMessage($key, $value)
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+
+    if (empty($_SESSION['FlashMessages'])) {
+        $_SESSION['FlashMessages'] = [$key => $value];
+    } else {
+        $_SESSION['FlashMessages'][$key] = $value;
+    }
+}
+
+function getFlashMessage($key)
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+
+    if (!empty($_SESSION['FlashMessages'][$key])) {
+
+        $temp = $_SESSION['FlashMessages'][$key];
+        unset($_SESSION["FlashMessages"][$key]);
+        return $temp;
     }
 }

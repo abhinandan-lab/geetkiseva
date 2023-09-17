@@ -18,12 +18,10 @@ $songData = RunQuery($connpdo, "SELECT * FROM songs WHERE id = ?", [$songid]);
 $serverTags = RunQuery($connpdo, "SELECT * FROM tags");
 $song_tags = getColRunQuery($connpdo, "SELECT `tag_id` FROM `tag_data` WHERE `song_id` = ?;", [$songid], 'tag_id');
 
-// dd($song_tags);
-
-// die;
 
 $songData = $songData[0];
-// dd($songData);
+
+display_alert('success', getFlashMessage('success'));
 
 ?>
 

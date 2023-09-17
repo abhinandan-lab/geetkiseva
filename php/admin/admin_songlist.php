@@ -9,8 +9,6 @@ include_once 'functions/Utils.php';
 
 $songlists = RunQuery($connpdo, "SELECT * FROM songs ORDER BY id LIMIT 300");
 
-// dd($songlists);
-
 
 ?>
 

@@ -9,7 +9,15 @@ checkSessionAndRedirect('admin_login_id', false, '/adminindex');
 
 ?>
 
-<?php include_once 'admin_header.php' ?>
+<?php include_once 'admin_header.php' ;
+
+display_alert('success', getFlashMessage('success'));
+
+
+?>
+
+
+
 <div class="sidebar_content def_padding">
 
 

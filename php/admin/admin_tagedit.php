@@ -59,7 +59,7 @@ $tag_data = $tag_data[0];
             </div>
 
             <div class="">
-                <input type="submit" value="Add New Tag">
+                <input type="submit" value="Update Tag">
             </div>
 
         </fieldset>
