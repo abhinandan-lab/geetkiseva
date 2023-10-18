@@ -23,7 +23,7 @@ $tag_data = $tag_data[0];
 
     <h1>Edit Tag </h1><br>
 
-    <form action="process_form.php" method="post">
+    <form action="admin_addtag_submit" method="post">
 
 
         <fieldset style="display: flex; justify-content: space-evenly; align-items: end; gap:2rem; padding: .6rem;">

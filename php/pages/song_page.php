@@ -24,7 +24,15 @@ if (!empty($_SESSION['current_tag_id'])) {
     $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
 }
 
-// dd($tag_songs);
+
+// removing active song from tag list
+$tag_songs_ids = array_column($tag_songs, 'id');
+$index = null;
+if(in_array($songdata['id'], $tag_songs_ids)){
+    $index = array_search($songdata['id'], $tag_songs_ids);
+}
+unset($tag_songs[$index]);
+
 
 ?>
 
@@ -68,7 +76,10 @@ if (!empty($_SESSION['current_tag_id'])) {
                 <div class="box2">
                     <h3>My lists </h3>
                     <ul>
-                        <?php if (!empty($tag_songs)) : ?>
+                    <?php 
+                        
+                        if (!empty($tag_songs)) : ?>
+                            
                             <?php foreach ($tag_songs as $song) : ?>
 
                                 <?php
@@ -92,6 +103,18 @@ if (!empty($_SESSION['current_tag_id'])) {
                                     </a>
                                 </li>
                             <?php endforeach; ?>
+                        <?php else: ?>
+                            <li>
+                                <a href="javascript:void();">
+                                    <center>
+                                        <p style="font-size: larger;"> <i class="fa-regular fa-file"></i> </p>
+                                        <ul>
+                                            <li>List Empty</li>
+
+                                        </ul>
+                                    </center>
+                                </a>
+                            </li>
                         <?php endif; ?>
 
 
@@ -104,4 +127,4 @@ if (!empty($_SESSION['current_tag_id'])) {
 </section>
 
 
-<?php include_once 'footer.php' ?>
+<?php include_once 'footer.php'; ?>

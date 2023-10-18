@@ -113,6 +113,7 @@ else {
         setFlashMessage('success', "Update song success");
 
         dd($url);
+        // dd($_SESSION);
         header("Location: $url");
 
     } catch (Exception $e) {

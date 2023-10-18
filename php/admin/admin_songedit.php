@@ -16,12 +16,14 @@ $songid = getURL()[2];
 $songData = RunQuery($connpdo, "SELECT * FROM songs WHERE id = ?", [$songid]);
 
 $serverTags = RunQuery($connpdo, "SELECT * FROM tags");
+// $serverTagIds = getColRunQuery($connpdo, "SELECT id FROM tags", [], 'id');
 $song_tags = getColRunQuery($connpdo, "SELECT `tag_id` FROM `tag_data` WHERE `song_id` = ?;", [$songid], 'tag_id');
 
 
 $songData = $songData[0];
-
-display_alert('success', getFlashMessage('success'));
+// dd($serverTagIds);
+// dd($_SESSION);
+display_alert();
 
 ?>
 
@@ -103,15 +105,16 @@ display_alert('success', getFlashMessage('success'));
                 <legend>Available Tags</legend>
 
 
-                <?php foreach ($serverTags as $k => $tag) : ?>
+                <?php
+                foreach ($serverTags as $k => $tag) : ?>
 
                     <label class="ml1rem">
-                        <input <?php if (isset($song_tags[$k])) {
-                                    if ($song_tags[$k] == $tag['id']) {
-                                        echo "checked";
-                                    }
+                        <input <?php
+
+                                if(in_array($tag['id'], $song_tags)) {
+                                    echo "checked";
                                 }
-                                ?> type="checkbox" name="tags[]" value="<?= $tag['id'] ?>">
+                            ?> type="checkbox" name="tags[]" value="<?= $tag['id'] ?>">
                         <?= $tag['name'] ?>
                     </label>
 

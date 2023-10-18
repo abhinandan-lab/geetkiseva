@@ -5,7 +5,8 @@ include_once 'config.php';
 include_once 'functions/Utils.php';
 
 
-
+$url_language = getURL()[1];
+$language = str_replace('-tag', '', $url_language);
 $tag_id = getURL()[2];
 
 $_SESSION['current_tag_id'] = $tag_id;
@@ -14,6 +15,10 @@ $tag_row = RunQuery($connpdo, "SELECT * FROM tags WHERE id = ?", [$tag_id]);
 $tag_row = $tag_row[0];
 
 // dd($tag_row);
+
+#===========================================================================================
+// tag_data decides that which song is used in which tags
+#===========================================================================================
 
 $tt = "SELECT songs.* FROM songs JOIN tag_data ON songs.id = tag_data.song_id WHERE tag_data.tag_id = ?;";
 $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
@@ -73,7 +78,7 @@ $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
 
                 <?php else: ?>
 
-                    <div class="item empty" style="display: none;">
+                    <div class="item empty" style="display: n one;">
                         <div>
                             <h3><a href="javascript:void(0)"><i class="fa-solid fa-file-circle-exclamation"></i> No items</a></h3>
                         </div>

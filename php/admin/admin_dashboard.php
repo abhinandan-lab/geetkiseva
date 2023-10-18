@@ -11,7 +11,7 @@ checkSessionAndRedirect('admin_login_id', false, '/adminindex');
 
 <?php include_once 'admin_header.php' ;
 
-display_alert('success', getFlashMessage('success'));
+display_alert();
 
 
 ?>

@@ -235,11 +235,30 @@
 
 <?php
 
-function display_alert($status, $message)
+function display_alert()
 {
+    if(!empty($_SESSION['FlashMessages'])){
+        $mesg = $_SESSION['FlashMessages']['success'] ?? '';
+        unset($_SESSION['FlashMessages']['success']);
+        if($mesg != ''){
+            echo "<script>  Noti({ status: 'success', content: '$mesg' }); </script>";
+        }
+    }
 
-    if (!empty($message)) {
-        echo "<script>  Noti({ status: '$status', content: '$message' }); </script>";
+    if(!empty($_SESSION['FlashMessages'])){
+        $mesg = $_SESSION['FlashMessages']['warning'] ?? '';
+        unset($_SESSION['FlashMessages']['warning']);
+        if($mesg != ''){
+            echo "<script>  Noti({ status: 'warning', content: '$mesg' }); </script>";
+        }
+    }
+
+    if(!empty($_SESSION['FlashMessages'])){
+        $mesg = $_SESSION['FlashMessages']['danger'] ?? '';
+        unset($_SESSION['FlashMessages']['danger']);
+        if($mesg != ''){
+            echo "<script>  Noti({ status: 'danger', content: '$mesg' }); </script>";
+        }
     }
 }
 

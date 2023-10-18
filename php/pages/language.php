@@ -9,7 +9,6 @@ $lanugae =  getURL()[1];
 $ssql = "SELECT t.*, s.thumbnail AS banner FROM tags t LEFT JOIN ( SELECT thumbnail FROM songs WHERE song_language = ? AND status = 'Active' ORDER BY thumbnail LIMIT 1 ) s ON 1=1 WHERE t.language = ?;";
 
 $lang_tags = RunQuery($connpdo, $ssql, [$lanugae, $lanugae]);
-
 // dd($lang_tags);
 
 ?>
