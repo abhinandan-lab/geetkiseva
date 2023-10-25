@@ -14,6 +14,8 @@ $tag_id = getURL()[2];
 $tag_data = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `id` = ?", [$tag_id]);
 $tag_data = $tag_data[0];
 
+display_alert();
+
 ?>
 
 
@@ -23,13 +25,13 @@ $tag_data = $tag_data[0];
 
     <h1>Edit Tag </h1><br>
 
-    <form action="admin_addtag_submit" method="post">
+    <form action="<?= BASEURL ?>/admin_edittag_submit" method="post">
 
 
         <fieldset style="display: flex; justify-content: space-evenly; align-items: end; gap:2rem; padding: .6rem;">
 
-            <legend style="padding: .2rem .4rem; background-color: white;">Create New Tag</legend>
-
+            <legend style="padding: .2rem .4rem; background-color: white;">Edit Current Tag</legend>
+            <input type="hidden" name="tid" value="<?= $tag_id ?>">
 
             <div class="">
 

@@ -34,6 +34,13 @@ $ROUTES = [
     '/tamil/(any)' => 'pages/song_page.php',
     '/telegu/(any)' => 'pages/song_page.php',
     '/malyalam/(any)' => 'pages/song_page.php',
+
+    '/english/(num)/(any)' => 'pages/song_page.php',
+    '/hindi/(num)/(any)' => 'pages/song_page.php',
+    '/marathi/(num)/(any)' => 'pages/song_page.php',
+    '/tamil/(num)/(any)' => 'pages/song_page.php',
+    '/telegu/(num)/(any)' => 'pages/song_page.php',
+    '/malyalam/(num)/(any)' => 'pages/song_page.php',
     
 
 
@@ -54,6 +61,7 @@ $ROUTES = [
     
     '/admin_song_tags' => 'admin/admin_songtags.php',
     '/admin_song_tagedit/(num)' => 'admin/admin_tagedit.php',
+    '/admin_edittag_submit' =>'formactions/adminforms/edit_tag_submit.php',
     '/admin_addtag_submit' =>'formactions/adminforms/add_tag_submit.php',
     '/admin_tag_delete/(num)' =>'admin/admin_del_tag.php',
     

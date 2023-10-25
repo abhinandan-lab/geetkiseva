@@ -9,9 +9,6 @@ function runRoute($routeDict, $router)
     $routeURLArr_keys = array_keys($routeDict);
     $myArr = explode("/", $router);
 
-    // dd($routeURLArr_keys);
-    // dd($myArr);
-
 
     $root_url = $myArr[1];
     $forward_slash_counts = count($myArr);
@@ -35,14 +32,9 @@ function runRoute($routeDict, $router)
             case 3:
                 # for ( /one/two ) variables
 
-                // echo "coming herer...";
-
                 $a = checkParmaterType($myArr[1]);
                 $b = checkParmaterType($myArr[2]);
 
-                // dd($routeURLArr_keys);
-                
-                
                 $url = "/{$myArr[1]}/{$myArr[2]}";  //          /course/1
                 $url2 = "/{$myArr[1]}/$b";           //          /course/(num)
                 $url3 = "/$a/$b";                   //          /(alpha)/(num)
@@ -68,6 +60,21 @@ function runRoute($routeDict, $router)
 
 
                 break;
+
+                case 4:
+                    # for ( /one/two/three ) 3 variables
+
+                    $a = checkParmaterType($myArr[1]);
+                    $b = checkParmaterType($myArr[2]);
+                    $c = checkParmaterType($myArr[3]);
+
+
+                    # _1__ ( alpha/num/any )
+                    if($a == '(alpha)' && $b == '(num)' && $c == '(any)') {
+
+                        $url = "/{$myArr[1]}/(num)/(any)";
+                        return $routeDict[$url];
+                    }
 
             default:
                 return '404.php';

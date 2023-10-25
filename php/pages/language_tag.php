@@ -9,7 +9,6 @@ $url_language = getURL()[1];
 $language = str_replace('-tag', '', $url_language);
 $tag_id = getURL()[2];
 
-$_SESSION['current_tag_id'] = $tag_id;
 
 $tag_row = RunQuery($connpdo, "SELECT * FROM tags WHERE id = ?", [$tag_id]);
 $tag_row = $tag_row[0];
@@ -22,9 +21,6 @@ $tag_row = $tag_row[0];
 
 $tt = "SELECT songs.* FROM songs JOIN tag_data ON songs.id = tag_data.song_id WHERE tag_data.tag_id = ?;";
 $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
-
-// dd($tag_songs);
-// ddd(empty($tag_songs));
 
 ?>
 
@@ -46,7 +42,7 @@ $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
                         <?php // dd($value); ?>
                         <div class="item">
                             <div>
-                                <h3><a href="<?= BASEURL ?>/<?= $value['song_language'] ?>/<?= $value['permalink'] ?>"><?= $value['title'] ?></a></h3>
+                                <h3><a href="<?= BASEURL ?>/<?= $value['song_language'] ?>/<?= $tag_id ?>/<?= $value['permalink'] ?>"><?= $value['title'] ?></a></h3>
                                 <ul>
                                     <li>
                                         <p>Language <span><?= ucfirst($value['song_language']) ?></span></p>
@@ -70,7 +66,7 @@ $tag_songs = RunQuery($connpdo, $tt, [$tag_id]);
                             </div>
 
                             <div>
-                                <a href="<?= BASEURL ?>/<?= $value['song_language'] ?>/<?= $value['id'] ?>"><i class="fa-regular fa-circle-play"></i></a>
+                                <a href="<?= BASEURL ?>/<?= $value['song_language'] ?>/<?= $tag_id ?>/<?= $value['permalink'] ?>"><i class="fa-regular fa-circle-play"></i></a>
                             </div>
 
                         </div>
