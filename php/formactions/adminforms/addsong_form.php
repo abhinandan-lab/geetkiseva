@@ -104,10 +104,9 @@ else {
 
 
         $url = BASEURL . '/admin_songlist';
-        echo "<script>
-        alert(\"Song added successfully!\");
-        window.location.href = '$url';
-        </script>";
+
+        setFlashMessage('success', "Add new Song success");
+        header("Location: $url");
 
     } catch (Exception $e) {
         print_r($e);

@@ -13,6 +13,8 @@ checkSessionAndRedirect('admin_login_id', false, '/adminindex');
 
 $serverTags = RunQuery($connpdo, "SELECT * FROM tags");
 
+display_alert();
+
 
 ?>
 
