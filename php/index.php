@@ -41,6 +41,10 @@ $ROUTES = [
     '/tamil/(num)/(any)' => 'pages/song_page.php',
     '/telegu/(num)/(any)' => 'pages/song_page.php',
     '/malyalam/(num)/(any)' => 'pages/song_page.php',
+
+
+    '/searchsong' => 'pages/searchresults.php',
+    '/solosong/(alpha)' => 'pages/solo_song_page.php',
     
 
 

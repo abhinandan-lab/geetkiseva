@@ -140,7 +140,7 @@ $tagsHindi = RunQuery($connpdo, "SELECT * FROM `tags` WHERE `language` LIKE 'hin
             </div>
 
             <div class="search-form">
-                <form action="">
+                <form action="<?= BASEURL ?>/searchsong" method="post">
                     <input type="search" name="search" placeholder="Search any song here...">
                     <button><i class="fa-solid fa-magnifying-glass"></i></button>
                 </form>
