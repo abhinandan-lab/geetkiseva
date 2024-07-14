@@ -19,6 +19,7 @@ $tables = [
         " release_year VARCHAR(20)",
         " english_meaning TEXT",
         " hindi_lyrics TEXT",
+        " english_lyrics TEXT",
         " hindi_meaning TEXT",
         " thumbnail VARCHAR(255)",
         " song_language VARCHAR(100)",

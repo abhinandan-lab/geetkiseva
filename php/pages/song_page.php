@@ -24,15 +24,18 @@ if (!empty($tag_id)) {
 // removing active song from tag list
 $tag_songs_ids = array_column($tag_songs, 'id');
 $index = null;
-if(in_array($songdata['id'], $tag_songs_ids)){
+if (in_array($songdata['id'], $tag_songs_ids)) {
     $index = array_search($songdata['id'], $tag_songs_ids);
 }
 unset($tag_songs[$index]);
 
-
 ?>
 
 <?php include_once 'header.php' ?>
+
+<script>
+    document.title = "<?= ucfirst($songdata['title']) ?> | <?= ucfirst($songdata['song_language']) ?>";
+</script>
 
 
 
@@ -72,10 +75,10 @@ unset($tag_songs[$index]);
                 <div class="box2">
                     <h3>My lists </h3>
                     <ul>
-                    <?php 
-                        
+                        <?php
+
                         if (!empty($tag_songs)) : ?>
-                            
+
                             <?php foreach ($tag_songs as $song) : ?>
 
                                 <?php
@@ -99,7 +102,7 @@ unset($tag_songs[$index]);
                                     </a>
                                 </li>
                             <?php endforeach; ?>
-                        <?php else: ?>
+                        <?php else : ?>
                             <li>
                                 <a href="javascript:void();">
                                     <center>

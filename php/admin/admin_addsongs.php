@@ -159,6 +159,12 @@ display_alert();
                 <textarea name="meaning_english" id="meaning_english" cols="30" rows="10"><?= getValue('meaning_english'); ?></textarea>
             </div>
 
+            <!-- English romanised -->
+            <div class="item">
+                <label class="bg-label">Englsih Romanised</label><br><br>
+                <textarea name="meaning_english" id="meaning_english" cols="30" rows="10"><?= getValue('english_lyrics'); ?></textarea>
+            </div>
+
         </div>
 
 
